@@ -7,16 +7,14 @@ export const fetchCinemasAction = async (next) => {
   try {
     const res = await requester({
       method: "GET",
-      url: apiPath.CINEMAS
+      url: apiPath.CINEMAS,
     });
     next({
       type: actions.SET_CINEMAS,
-      payload: res.data.content
-    })
-  }
-  catch(err) {  }
-}
-
+      payload: res.data.content,
+    });
+  } catch (err) {}
+};
 
 export const fetchBannersAction = async (next) => {
   try {
@@ -29,7 +27,7 @@ export const fetchBannersAction = async (next) => {
       type: actions.SET_BANNERS,
       payload: res.data.content,
     });
-  } catch (err) { }
+  } catch (err) {}
 };
 
 export const fetchMoviesAction = (page = 1) => {
@@ -39,7 +37,7 @@ export const fetchMoviesAction = (page = 1) => {
         url: apiPath.MOVIES,
         method: "GET",
         params: {
-          maNhom: "GP10",
+          maNhom: "GP01",
           soTrang: page,
           soPhanTuTrenTrang: 4,
         },
@@ -49,7 +47,7 @@ export const fetchMoviesAction = (page = 1) => {
         type: actions.SET_MOVIES,
         payload: res.data.content,
       });
-    } catch (err) { }
+    } catch (err) {}
   };
 };
 
@@ -68,7 +66,7 @@ export const fetchMovieDetailAction = (id) => {
         type: actions.SET_MOVIE_DETAIL,
         payload: res.data.content,
       });
-    } catch (err) { }
+    } catch (err) {}
   };
 };
 
@@ -87,6 +85,24 @@ export const fetchMovieDetailScheduleAction = (id) => {
         type: actions.SET_MOVIE_DETAIL_SCHEDULE,
         payload: res.data.content,
       });
-    } catch (err) { }
+    } catch (err) {}
+  };
+};
+
+export const fetchMovieCheduleDetailAction = (id) => {
+  return async (next) => {
+    try {
+      const res = await requester({
+        url: apiPath.SCHEDULE_CINEMAS,
+        method: "GET",
+        params: {
+          MaPhim: id,
+        },
+      });
+      next({
+        type: actions.SCHEDULE_CINEMAS,
+        payload: res.data.content,
+      });
+    } catch (error) {}
   };
 };

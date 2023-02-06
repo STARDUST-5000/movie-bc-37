@@ -15,7 +15,7 @@ const Login = () => {
 
     try {
       await dispatch(loginAction(values));
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.log(err.response.data.content);
     }
@@ -37,10 +37,11 @@ const Login = () => {
                 required: true,
                 message: "Hãy nhập tài khoản !",
               },
-              // {
-              //   pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              //   message: "Email không hợp lệ"
-              // }
+              {
+                pattern:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Email không hợp lệ",
+              },
             ]}
           >
             <Input />

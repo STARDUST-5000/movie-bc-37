@@ -39,3 +39,37 @@ export const fetchProfileAction = async (next) => {
     console.log(err);
   }
 };
+
+export const registerAction = (userSignup) => {
+  return async (next) => {
+    try {
+      const res = await requester({
+        method: "POST",
+        url: "/api/QuanLyNguoiDung/DangKy",
+        data: userSignup,
+      });
+      next({
+        type: actions.CREATE_PROFILE,
+        payload: res.data.content,
+      });
+    } catch (err) {
+      throw err;
+    }
+  };
+};
+
+export const createProfileAction = async (next) => {
+  try {
+    const res = await requester({
+      method: "POST",
+      url: "/api/QuanLyNguoiDung/ThemNguoiDung",
+    });
+
+    next({
+      type: actions.CREATE_PROFILE,
+      payload: res.data.content,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

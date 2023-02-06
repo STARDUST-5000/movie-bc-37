@@ -21,14 +21,14 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<MovieDetail />} />
         <Route
           path="/booking"
           element={<AppRoute component={Booking} isPrivate />}
         />
         <Route path="/login" element={<AppRoute component={Login} isAuth />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<AppRoute component={Signup} />} />
       </Routes>
     </BrowserRouter>
   );

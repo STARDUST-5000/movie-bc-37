@@ -1,3 +1,5 @@
+import requester from "app/api";
+
 const { apiPath } = require("app/apiPath");
 const getScheduleMovieCinema = async (maHeThongRap) => {
   const res = await requester({
