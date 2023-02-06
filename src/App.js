@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/detail/:id" element={<MovieDetail />} />
         <Route
           path="/booking"
